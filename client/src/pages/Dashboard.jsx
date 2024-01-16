@@ -11,7 +11,7 @@ function Dashboard() {
 
     <div className="container-fluid">
 
-    <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
 
         <div className="row">
 

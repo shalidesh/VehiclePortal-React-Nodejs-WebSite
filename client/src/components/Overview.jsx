@@ -88,14 +88,14 @@ function Overview({id}) {
         </div>
 
         <div className="container">
-        <div className="row mt-5">
-        <div className="col-6">
-        <PieChart/>
+            <div className="row mt-5">
+              <div className="col-6">
+                <PieChart/>
 
-        </div>
-        
-        <div className="col-6">
-        <PieChart/>
+              </div>
+            
+            <div className="col-6">
+          <PieChart/>
 
         </div>
 
