@@ -1,7 +1,46 @@
 import React from 'react'
 // import Breadcrumbs from './Breadcrumbs'
 
-function VehiclePriceTable({ id }) {
+
+function TableRow({ data }) {
+  return (
+    <tr>
+      <th scope="row">{data.year}</th>
+      {data.months.map((month, index) => (
+        <td key={index}>{month}</td>
+      ))}
+    </tr>
+  );
+}
+
+function VehiclePriceTable({ id}) {
+
+  const rowsData = [
+    {
+      year: '2012',
+      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+    },
+    {
+      year: '2013',
+      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+    },
+    {
+      year: '2014',
+      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+    },
+    {
+      year: '2015',
+      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+    },
+    {
+      year: '2016',
+      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+    },
+    {
+      year: '2017',
+      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+    },
+  ];
 
   // const breadcrumbs = [
   //   { label: 'Home', link: '/'},
@@ -16,7 +55,7 @@ function VehiclePriceTable({ id }) {
         
         <div className="row">
 
-          <div className="btn-group">
+          <div className="btn-group ml-5">
             <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Reg/UnReg
             </button>
@@ -59,52 +98,9 @@ function VehiclePriceTable({ id }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">2012</th>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-              </tr>
-              <tr>
-                <th scope="row">2013</th>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-              </tr>
-              <tr>
-                <th scope="row">2014</th>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-                <td>6,500,000</td>
-              </tr>
-              
+            {rowsData.map((data, index) => (
+              <TableRow key={index} data={data} />
+            ))}
             </tbody>
           </table>
 

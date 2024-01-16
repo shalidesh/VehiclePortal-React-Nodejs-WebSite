@@ -10,7 +10,7 @@ function Home() {
 
         <LeftBar/>
 
-        <div id="content-wrapper" className="d-flex flex-column">
+        <div id="content-wrapper" className="d-flex flex-column" style={{paddingLeft:'220px'}}>
             <div id="content">
 
                 <TopBar/>

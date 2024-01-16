@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function LeftBar() {
   return (
     <div>
-        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
                     
             <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
