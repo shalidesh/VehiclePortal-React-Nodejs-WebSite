@@ -1,5 +1,6 @@
-import React from 'react'
-// import Breadcrumbs from './Breadcrumbs'
+import React, { useState } from 'react';
+import axios from "axios";
+import Breadcrumbs from './Breadcrumbs'
 
 
 function TableRow({ data }) {
@@ -15,67 +16,91 @@ function TableRow({ data }) {
 
 function VehiclePriceTable({ id}) {
 
-  const rowsData = [
-    {
-      year: '2012',
-      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
-    },
-    {
-      year: '2013',
-      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
-    },
-    {
-      year: '2014',
-      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
-    },
-    {
-      year: '2015',
-      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
-    },
-    {
-      year: '2016',
-      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
-    },
-    {
-      year: '2017',
-      months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
-    },
-  ];
+  const [regUnReg, setRegUnReg] = useState('Reg/UnReg');
+  const [subModel, setSubModel] = useState('SubModel');
+  const [subModel1, setSubMode1] = useState('respone');
 
-  // const breadcrumbs = [
-  //   { label: 'Home', link: '/'},
-  //   { label: `${id}`, link: `/vehicle-price/${id}`},
-  //   ];
+   // Function to handle search button click
+   const handleSubmit = async (e) => {
+
+        e.preventDefault();
+        try {
+          const response = await axios.post(`/vehicleprice/${id}`, {
+            regUnReg,
+            subModel,
+          });
+
+          console.log(response.data);
+          setSubMode1(response.data.username)
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+
+    const rowsData = [
+      {
+        year: '2012',
+        months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+      },
+      {
+        year: '2013',
+        months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+      },
+      {
+        year: '2014',
+        months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+      },
+      {
+        year: '2015',
+        months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+      },
+      {
+        year: '2016',
+        months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+      },
+      {
+        year: '2017',
+        months: ['6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000', '6,500,000']
+      },
+    ];
+
+  const breadcrumbs = [
+    { label: 'Home', link: '/'},
+    { label: `${id}`, link: `/vehicle-price/${id}`},
+    ];
 
   return (
 
     <div className="container-fluid">
 
-        {/* <Breadcrumbs breadcrumbs={breadcrumbs} /> */}
-        
-        <div className="row">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
 
-          <div className="btn-group ml-5">
-            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Reg/UnReg
-            </button>
-            <div className="dropdown-menu dropdown-menu-right">
-              <button className="dropdown-item" type="button">Registered</button>
-              <button className="dropdown-item" type="button">Un-Registered</button>
+              {subModel1}
+            <div className="row">
+
+                  <div className="btn-group ml-5">
+                    <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {regUnReg} 
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right">
+                      <button className="dropdown-item" type="button" onClick={() => setRegUnReg('Registered')}>Registered</button>
+                      <button className="dropdown-item" type="button" onClick={() => setRegUnReg('Un-Registered')}>Un-Registered</button>
+                    </div>
+                  </div>
+
+                  <div className="btn-group ml-3">
+                    <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {subModel}
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right">
+                      <button className="dropdown-item" type="button" onClick={() => setSubModel('Sub Model 01')}>Sub Model 01</button>
+                      <button className="dropdown-item" type="button" onClick={() => setSubModel('Sub Model 02')}>Sub Model 02</button>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary ml-5" onClick={handleSubmit}>SEARCH</button>
+
             </div>
-          </div>
-
-          <div className="btn-group ml-3">
-            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              SubModel
-            </button>
-            <div className="dropdown-menu dropdown-menu-right">
-              <button className="dropdown-item" type="button">Sub Model 01</button>
-              <button className="dropdown-item" type="button">Sub Model 02</button>
-            </div>
-          </div>
-
-        </div>
 
         <div className="row mt-5">
 

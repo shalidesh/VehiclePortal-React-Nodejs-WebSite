@@ -8,6 +8,23 @@ function Overview({id}) {
             { label: 'Home', link: '/'},
             { label: 'all', link: `/portfolio/all`},
         ];
+
+    // Function to handle search button click
+   const handleSubmit = async (e) => {
+
+    e.preventDefault();
+    try {
+      // const response = await axios.post('/vehicleprice/nissan', {
+      //   regUnReg,
+      //   subModel,
+      // });
+
+      // console.log(response.data);
+      // setSubMode1(response.data.username)
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
     
       return (
 
