@@ -2,13 +2,18 @@ const router = require("express").Router();
 
 
 //Nissan
-router.get("/nissan", async (req, res) => {
+router.post("/nissan", async (req, res) => {
     try {
 
-        const user = {
-            username: "nisaan",
-            email: "vehicle price",
-          };
+      console.log("nissan called"); 
+
+      console.log(req.body.regUnReg); 
+      console.log(req.body.subModel); 
+
+      const user = {
+          username: "nisaan",
+          email: "vehicle price",
+        };
 
       res.status(200).json(user);
     } catch (err) {
@@ -18,8 +23,13 @@ router.get("/nissan", async (req, res) => {
 
 
 //Suzuki
-router.get("/suzuki", async (req, res) => {
+router.post("/suzuki", async (req, res) => {
   try {
+
+    console.log("suzuki called"); 
+
+    console.log(req.body.regUnReg); 
+    console.log(req.body.subModel); 
     
     const user = {
         username: "suzuki",
@@ -35,8 +45,13 @@ router.get("/suzuki", async (req, res) => {
 });
 
 //Toyota
-router.get("/toyota", async (req, res) => {
+router.post("/toyota", async (req, res) => {
     try {
+
+      console.log("toyota called"); 
+
+      console.log(req.body.regUnReg); 
+      console.log(req.body.subModel); 
       
         const user = {
             username: "toyota",
@@ -54,8 +69,13 @@ router.get("/toyota", async (req, res) => {
 
 //Honda
 
-router.get("/honda", async (req, res) => {
+router.post("/honda", async (req, res) => {
     try {
+
+      console.log("honda called"); 
+
+      console.log(req.body.regUnReg); 
+      console.log(req.body.subModel); 
       
         const user = {
             username: "honda",
