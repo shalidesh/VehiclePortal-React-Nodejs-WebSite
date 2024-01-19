@@ -1,16 +1,27 @@
 const router = require("express").Router();
+const XLSX = require('xlsx');
 
 
 //All
 router.get("/all", async (req, res) => {
     try {
 
-        const user = {
-            username: "all",
-            email: "portfolio",
-          };
+      // Specify the path of your Excel file
+      const filePath = 'DataBase/portfolio.xlsx';
 
-      res.status(200).json(user);
+      // Read the file
+      const workbook = XLSX.readFile(filePath);
+
+      // Parse the first sheet of the workbook
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+
+      // Convert the worksheet to JSON
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      console.log(jsonData);
+
+      res.status(200).json(jsonData);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -18,8 +29,30 @@ router.get("/all", async (req, res) => {
 
 
 //Suzuki
-router.get("/suzuki", async (req, res) => {
+router.post("/suzuki", async (req, res) => {
   try {
+
+    console.log("suzuki called"); 
+
+    console.log(req.body.id); 
+    console.log(req.body.subModel); 
+
+    // Specify the path of your Excel file
+    const filePath = 'DataBase/portfolio.xlsx';
+
+    // Read the file
+    const workbook = XLSX.readFile(filePath);
+
+    // Parse the first sheet of the workbook
+    const sheetName = workbook.SheetNames[1];
+    const worksheet = workbook.Sheets[sheetName];
+
+    // Convert the worksheet to JSON
+    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+    console.log(jsonData);
+
+    res.status(200).json(jsonData);
     
     const user = {
         username: "suzuki",
@@ -27,7 +60,7 @@ router.get("/suzuki", async (req, res) => {
       };
 
 
-  res.status(200).json(user);
+  res.status(200).json(jsonData);
 
   } catch (err) {
     res.status(500).json(err);
@@ -38,16 +71,31 @@ router.get("/suzuki", async (req, res) => {
 
 
 //Nissan
-router.get("/nissan", async (req, res) => {
+router.post("/nissan", async (req, res) => {
     try {
-      
-      const user = {
-          username: "nissan",
-          email: "portfolio",
-        };
-  
-  
-    res.status(200).json(user);
+
+      console.log("nissan called"); 
+
+      console.log(req.body.id); 
+      console.log(req.body.subModel); 
+
+      // Specify the path of your Excel file
+      const filePath = 'DataBase/portfolio.xlsx';
+
+      // Read the file
+      const workbook = XLSX.readFile(filePath);
+
+      // Parse the first sheet of the workbook
+      const sheetName = workbook.SheetNames[2];
+      const worksheet = workbook.Sheets[sheetName];
+
+      // Convert the worksheet to JSON
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      console.log(jsonData);
+
+      res.status(200).json(jsonData);
+
   
     } catch (err) {
       res.status(500).json(err);
@@ -57,16 +105,29 @@ router.get("/nissan", async (req, res) => {
   
 
 //Toyota
-router.get("/toyota", async (req, res) => {
+router.post("/toyota", async (req, res) => {
     try {
-      
-        const user = {
-            username: "toyota",
-            email: "portfolio",
-          };
-    
-    
-      res.status(200).json(user);
+      console.log("toyota called"); 
+
+      console.log(req.body.id); 
+      console.log(req.body.subModel); 
+
+      // Specify the path of your Excel file
+      const filePath = 'DataBase/portfolio.xlsx';
+
+      // Read the file
+      const workbook = XLSX.readFile(filePath);
+
+      // Parse the first sheet of the workbook
+      const sheetName = workbook.SheetNames[3];
+      const worksheet = workbook.Sheets[sheetName];
+
+      // Convert the worksheet to JSON
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      console.log(jsonData);
+
+      res.status(200).json(jsonData);
   
     } catch (err) {
         res.status(500).json(err);
@@ -76,20 +137,36 @@ router.get("/toyota", async (req, res) => {
 
 
 //Honda
-router.get("/honda", async (req, res) => {
+router.post("/honda", async (req, res) => {
     try {
+
+      console.log("honda called"); 
+
+      console.log(req.body.id); 
+      console.log(req.body.subModel); 
+
+      // Specify the path of your Excel file
+      const filePath = 'DataBase/portfolio.xlsx';
+
+      // Read the file
+      const workbook = XLSX.readFile(filePath);
+
+      // Parse the first sheet of the workbook
+      const sheetName = workbook.SheetNames[3];
+      const worksheet = workbook.Sheets[sheetName];
+
+      // Convert the worksheet to JSON
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      console.log(jsonData);
+
+      res.status(200).json(jsonData);
       
-        const user = {
-            username: "honda",
-            email: "portfolio",
-          };
-    
-        res.status(200).json(user);
+      
     } catch (err) {
       res.status(500).json(err);
     }
   });
   
-
 
 module.exports=router;
