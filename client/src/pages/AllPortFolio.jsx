@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import { useParams } from 'react-router-dom';
 import Overview from '../components/Overview';
 import PieChart from '../components/PieChart';
+import ModelPortfolio from '../components/ModelPortfolio';
 
 function AllPortFolio() {
 
@@ -12,22 +13,23 @@ function AllPortFolio() {
 
  
   return (
-    <div id="wrapper">
+      <div id="wrapper">
 
-      <LeftBar/>
+        <LeftBar/>
 
-      <div id="content-wrapper" className="d-flex flex-column" style={{paddingLeft:'220px'}} >
-          <div id="content">
+        <div id="content-wrapper" className="d-flex flex-column" style={{paddingLeft:'220px'}} >
+            <div id="content">
 
-              <TopBar/>
-              <Overview id={id} />
-              
-          </div>
-          
-          <Footer/>
-      </div>
+                <TopBar/>
 
-  </div>
+                {id === 'all' ? <Overview id={id} /> : <ModelPortfolio id={id} />}
+                
+            </div>
+            
+            <Footer/>
+        </div>
+
+    </div>
   )
 }
 

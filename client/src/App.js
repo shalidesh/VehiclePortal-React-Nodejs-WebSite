@@ -13,8 +13,8 @@ function App() {
         <Route path="/" element={ <Home/> } />
         <Route path="/vehicle-price/:id" element={ <VehiclePrice/> } />
         <Route path="/graphs/:id" element={ <VehicleChart/> } />
-        <Route path="/portfolio/all" element={ <AllPortFolio/> } />
-        {/* <Route path="/portfolio/:id" element={ <VehiclePortFolio/> } /> */}
+        <Route path="/portfolio/:id" element={ <AllPortFolio/> } />
+        
     </Routes>
   );
  }
