@@ -6,12 +6,9 @@ function LeftBar() {
     <div>
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
-                    
             <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                                    <div className="sidebar-brand-icon rotate-n-15">
-                                        <i className="fas fa-laugh-wink"></i>
-                                    </div>
-                                    <div className="sidebar-brand-text mx-3">CDB Admin</div>
+                
+                <div className="sidebar-brand-text mx-3">VEHICLE Portfolio</div>
             </a>
 
             <hr className="sidebar-divider my-0"/>
@@ -107,12 +104,12 @@ function LeftBar() {
             </li>
 
 
-            <hr className="sidebar-divider"/>
+            {/* <hr className="sidebar-divider"/>
 
 
             <div className="sidebar-heading">
                 Addons
-            </div>
+            </div> */}
 
 
             <li className="nav-item">
@@ -147,12 +144,23 @@ function LeftBar() {
                 </div>
             </li>
 
+            <li className="nav-item">
+                <Link to="/help">
+                    <a className="nav-link collapsed" href="#">
+                            <i className="fas fa-fw fa-solid fa-car"></i>
+                            <span>Vehicle HELP</span>
+                    </a>
+                </Link>
+               
+            </li>
+
             <hr className="sidebar-divider d-none d-md-block"/>
 
 
             <div className="text-center d-none d-md-inline">
                 <button className="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+
 
         </ul>
     </div>

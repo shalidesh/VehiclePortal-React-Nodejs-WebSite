@@ -4,6 +4,12 @@ import PieChart from './PieChart';
 import axios from "axios";
 import Pagination from 'react-bootstrap/Pagination';
 
+import { nissan_list } from '../constants/nissan';
+import { suzuki_list } from '../constants/suzuki';
+import { honda_list } from '../constants/honda';
+import { toyota_list } from '../constants/toyota';
+import { micro_list } from '../constants/micro';
+
 function ModelPortfolio({id}) {
     const breadcrumbs = [
         { label: 'Home', link: '/'},
@@ -13,26 +19,56 @@ function ModelPortfolio({id}) {
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
-    const [subModel, setSubModel] = useState('SubModel 01');
+    const [subModel, setSubModel] = useState('SUNNY');
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.post(`/portfolio/${id}`, {
-                    id,
-                    "subModel":"SubModel 03",
-                });
-    
-            console.log(response.data);
-            setData(response.data);
-            
-            }catch (err) {
-                console.error(err);
-            }
-        };
 
-        fetchData();
+        const fetchData = async () => {
+
+            switch (id) {
+              case 'nissan':
+                setSubModel(nissan_list[0]);
+                break;
+              case 'suzuki':
+                setSubModel(suzuki_list[0]);
+                break;
+              case 'honda':
+                setSubModel(honda_list[0]);
+                break;
+              case 'toyota':
+                setSubModel(toyota_list[0]);
+                break;
+              default:
+                setSubModel(micro_list[0]);
+              }
+      
+              try {
+                    const response = await axios.post(`/portfolio/${id}`, {
+                        id,
+                        subModel
+                    });
+        
+                console.log(response.data);
+                setData(response.data);
+                
+              }catch (err) {
+                  console.error(err);
+              }
+          };
+      
+          fetchData();
+
+       
     }, [id]);
+
+    const idMap = {
+        'nissan':'NISSAN',
+        'suzuki':'SUZUKI',
+        'honda':'HONDA',
+        'toyota':'TOYOTA',
+        'micro':"MICRO"
+      }
+
 
     // Function to handle search button click
    const handleSubmit = async (e) => {
@@ -71,12 +107,15 @@ function ModelPortfolio({id}) {
 
             <div className="container">
                 <Breadcrumbs breadcrumbs={breadcrumbs} />
+
+                <h1 className='mt-2 mb-3'><strong style={{color: 'black'}}>{idMap[id]}</strong> VEHICLE PORTFOLIO</h1>
+
                 <div className="row mt-5 mb-5">
                     <div className="col-6">
-                        <PieChart/>
+                        <PieChart data={data}/>
                     </div>
                     <div className="col-6">
-                        <PieChart/>
+                        <PieChart data={data}/>
                     </div>
                 </div>
 
@@ -86,9 +125,32 @@ function ModelPortfolio({id}) {
                     <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {subModel} 
                     </button>
-                    <div className="dropdown-menu dropdown-menu-right">
-                        <button className="dropdown-item" type="button" onClick={() => setSubModel('SubModel 01')}>SubModel 01</button>
-                        <button className="dropdown-item" type="button" onClick={() => setSubModel('SubModel 02')}>SubModel 02</button>
+                    <div className="dropdown-menu dropdown-menu-right"  style={{
+                                      height: 'auto',
+                                      maxHeight: '200px',
+                                      overflowX: 'hidden',
+                                      zIndex: 9999,
+                                      top: '20%'
+                                      
+                            }}>
+                    {id==='nissan' ? nissan_list.map((item, index) => (
+                                        <button  className="dropdown-item" type="button" onClick={() => setSubModel(item)}>{item}</button>
+                                        ))
+                              : id==='suzuki' ? suzuki_list.map((item, index) => (
+                                <button  className="dropdown-item" type="button" onClick={() => setSubModel(item)}>{item}</button>
+                                ))
+                              :id==='honda' ? honda_list.map((item, index) => (
+                                      <button  className="dropdown-item" type="button" onClick={() => setSubModel(item)}>{item}</button>
+                                ))
+                              :id==='toyota' ? toyota_list.map((item, index) => (
+                                  <button  className="dropdown-item" type="button" onClick={() => setSubModel(item)}>{item}</button>
+                              ))
+      
+                              :id==='micro' ? micro_list.map((item, index) => (
+                                <button  className="dropdown-item" type="button" onClick={() => setSubModel(item)}>{item}</button>
+                            )):nissan_list.map((item, index) => (
+                              <button  className="dropdown-item" type="button" onClick={() => setSubModel(item)}>{item}</button>
+                          ))}
                     </div>
                     </div>
 

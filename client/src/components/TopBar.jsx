@@ -1,8 +1,18 @@
-import React from 'react'
+import { useContext, useRef } from "react";
 import Footer from './Footer';
 import Dashboard from '../pages/Dashboard';
+import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
 
 function TopBar() {
+
+    const { dispatch, isFetching } = useContext(Context);
+
+
+    const handleLogout = () => {
+        dispatch({ type: "LOGOUT" });
+      };
+
   return (
 
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -85,19 +95,23 @@ function TopBar() {
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                            <a className="dropdown-item" href="#">
+                            {/* <a className="dropdown-item" href="#">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Settings
                             </a>
                             <a className="dropdown-item" href="#">
                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Activity Log
-                            </a>
+                            </a> */}
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
+                            
+                                <a className="dropdown-item" href="#" onClick={handleLogout} data-toggle="modal" data-target="#logoutModal">
+                                    <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+
+                            
+                            
                         </div>
                     </li>
 

@@ -46,7 +46,7 @@ const options = {
   },
 };
 
-function PieChart() {
+function PieChart({data1}) {
   return(
   <Pie data={data} options={options} />
   ); 
