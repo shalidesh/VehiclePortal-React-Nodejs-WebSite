@@ -12,6 +12,8 @@ router.get("/all", async (req, res) => {
       // Read the file
       const workbook = XLSX.readFile(filePath);
 
+      console.log(workbook);
+
       // Parse the first sheet of the workbook
       const sheetName = workbook.SheetNames[0];
       const worksheet = workbook.Sheets[sheetName];
@@ -19,7 +21,7 @@ router.get("/all", async (req, res) => {
       // Convert the worksheet to JSON
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-      console.log(jsonData);
+      // console.log(jsonData);
 
       res.status(200).json(jsonData);
     } catch (err) {
@@ -52,15 +54,7 @@ router.post("/suzuki", async (req, res) => {
 
     console.log(jsonData);
 
-    res.status(200).json(jsonData);
-    
-    const user = {
-        username: "suzuki",
-        email: "portfolio",
-      };
-
-
-  res.status(200).json(jsonData);
+     res.status(200).json(jsonData);
 
   } catch (err) {
     res.status(500).json(err);
@@ -152,7 +146,7 @@ router.post("/honda", async (req, res) => {
       const workbook = XLSX.readFile(filePath);
 
       // Parse the first sheet of the workbook
-      const sheetName = workbook.SheetNames[3];
+      const sheetName = workbook.SheetNames[4];
       const worksheet = workbook.Sheets[sheetName];
 
       // Convert the worksheet to JSON
@@ -167,6 +161,39 @@ router.post("/honda", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+
+  
+//Micro
+router.post("/micro", async (req, res) => {
+  try {
+    console.log("toyota called"); 
+
+    console.log(req.body.id); 
+    console.log(req.body.subModel); 
+
+    // Specify the path of your Excel file
+    const filePath = 'DataBase/portfolio.xlsx';
+
+    // Read the file
+    const workbook = XLSX.readFile(filePath);
+
+    // Parse the first sheet of the workbook
+    const sheetName = workbook.SheetNames[5];
+    const worksheet = workbook.Sheets[sheetName];
+
+    // Convert the worksheet to JSON
+    const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+    console.log(jsonData);
+
+    res.status(200).json(jsonData);
+
+  } catch (err) {
+      res.status(500).json(err);
+    
+  }
+});
   
 
 module.exports=router;

@@ -13,6 +13,7 @@ function Overview({id}) {
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [regUnReg, setRegUnReg] = useState('Registered');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -45,6 +46,21 @@ function Overview({id}) {
         <>
             <div className="container">
                 <Breadcrumbs breadcrumbs={breadcrumbs} />
+
+                <h1 className='mt-2 mb-3'><strong style={{color: 'black'}}>ALL</strong> VEHICLE PORTFOLIO</h1>
+
+                <div class="row mt-5">
+
+                        <div className="btn-group ml-0">
+                            <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {regUnReg} 
+                            </button>
+                            <div className="dropdown-menu dropdown-menu-right">
+                            <button className="dropdown-item" type="button" onClick={() => setRegUnReg('Registered')}>Registered</button>
+                            <button className="dropdown-item" type="button" onClick={() => setRegUnReg('Un-Registered')}>Un-Registered</button>
+                            </div>
+                        </div>
+                </div>      
                 <div className="row mt-5">
                     <table className="table">
                         <thead className="thead-dark">
